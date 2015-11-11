@@ -1,0 +1,103 @@
+<html>
+<head>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
+    
+    <script type="text/javascript" src="/javascript/prototype.js"></script>    
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>    
+    <style>
+        body{
+            background-image: url("img/fondo.jpg");
+            background-repeat: no-repeat;
+        }
+        div.panel {
+            height: 80%;
+            width: 900px;
+            border: 1px solid black;
+        }
+         .panel-body  {
+            word-break:break-all
+         }
+        .prebody{
+            height: 80%;
+            width: 850px;
+        }
+     </style>    
+        
+    
+    <script>
+        
+        function ejecutarComando(){
+            var valor = document.getElementById("comando").value;
+            new Ajax.Request('/com', {
+                  method: 'get',
+                  parameters: {com: valor},
+                  onSuccess: topSuccess
+              });
+            
+        }
+            
+            function topSuccess(response){
+                var container = $('resCom');
+                var content = response.responseText;
+                container.update(content);
+            }
+        
+
+    </script>
+    
+    <title><%= title %></title>
+    
+</head>
+    
+    <nav class="navbar navbar-default navbar-static-top" style="background:#829bae">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <a class="navbar-brand" style="color:white;">Monitoreo del Linux Yocto / Intel Galileo
+              </a>
+          </div>
+          <div class="collapse navbar-collapse">
+              <form class="navbar-form navbar-right" action="/topRender" method="get" >
+                <button type="submit" class="btn btn-inverse">Ejecutar comando top</button>
+              </form>
+              <form class="navbar-form navbar-right" action="/whoRender" method="get" >
+                <button type="submit" class="btn btn-inverse">Ejecutar comando who</button>
+              </form>
+              <form class="navbar-form navbar-right" action="/freeRender" method="get" >
+                <button type="submit" class="btn btn-inverse">Ejecutar comando free</button>
+              </form>
+              <form class="navbar-form navbar-right" action="/comRender" method="get" >
+                <button type="submit" class="btn btn-inverse">Ejecutar comandos</button>
+              </form>
+          </div>
+      </div>
+    </nav>
+    
+    <div class="container" align="center" >
+      <div>
+          <input id="comando" ></input>
+          <button type="text" class="btn btn-inverse" onclick="ejecutarComando()">Ejecutar</button>
+      </div>
+      <br>
+      <div id="panel" class="panel panel-primary" >
+          <div class="panel-heading">Comando ejecutado por el usuario</div>
+              <div class="panel-body">
+                  <pre align="left" id ="resCom" class="prebody"></pre>
+              </div>
+      </div>
+    </div>    
+  
+<body>
+</body>    
+</html>
+
