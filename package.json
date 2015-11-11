@@ -2,7 +2,7 @@
   "name": "pps",
   "version": "0.0.1",
   "description": "Proyecto para ejemplificar los modulos probados para la practica profesiona supervisad",
-  "main": "ejemplo.js",
+  "main": "main.js",
   "dependencies": {
     "ejs": "^2.3.4",
     "express": "^4.13.3",

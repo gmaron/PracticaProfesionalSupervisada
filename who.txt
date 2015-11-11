@@ -1,6 +1,0 @@
- 15:13:20 up 8 min,  4 users,  load average: 0.62, 0.98, 0.62
-USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
-turqito  :0       :0               15:06   ?xdm?   4:18   0.87s /sbin/upstart --user
-turqito  pts/5    :0               15:08    4:39   1.21s  1.21s bash
-turqito  pts/6    :0               15:09    3:05  13.21s  0.01s w
-turqito  pts/18   :0               15:10    2:33   0.32s  0.32s bash

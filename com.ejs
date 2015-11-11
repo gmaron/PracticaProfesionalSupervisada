@@ -53,7 +53,23 @@
                 container.update(content);
             }
         
-
+            var update = function actualizarHora(){
+                    var container = $('horaActual');
+                    var hoy = new Date();
+                    var dd = hoy.getDate();
+                    var mm = hoy.getMonth()+1; //Enero es el mes 0
+                    var yy = hoy.getFullYear();
+                    var hh = hoy.getHours();
+                    var min = hoy.getMinutes();
+                        if (parseInt(min,10) < 10){
+                        min = '0'+min;
+                    }
+                    var seg = hoy.getSeconds();
+                    var fecha_hora = hh+":"+min+":"+seg+" - "+dd+"/"+mm+"/"+yy;
+                    container.update(fecha_hora);
+            }    
+            
+            setInterval(update,1000);
     </script>
     
     <title><%= title %></title>
@@ -79,6 +95,7 @@
               <form class="navbar-form navbar-right" action="/comRender" method="get" >
                 <button type="submit" class="btn btn-inverse">Ejecutar comandos</button>
               </form>
+              <label class="navbar-brand" style="color:white;" id="horaActual"></label>
           </div>
       </div>
     </nav>
